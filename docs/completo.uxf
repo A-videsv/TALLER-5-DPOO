@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=12
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Cmd to select multiple elements
+// Use Cmd+mouse to select via lasso
+//
+// Use +/- or Cmd+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Cmd+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>20</y>
+      <w>690</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Restaurante
+--
+/CARPETA_FACTURAS: String/
+/PREFIJO_FACTURAS: String/
+--
++Restaurante()
++iniciarPedido(String nombreCliente, String direccionCliente): void
++cerrarYGuardarPedido(): void
++getPedidoEnCurso(): Pedido
++getPedidos(): ArrayList&lt;Pedido&gt;
++getMenuBase(): ArrayList&lt;ProductoMenu&gt;
++getMenuCombos(): ArrayList&lt;Combo&gt;
++getIngredientes(): ArrayList&lt;Ingrediente&gt;
++cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos): void
+-cargarIngredientes(File archivoIngredientes): void
+-cargarMenu(File archivoMenu): void
+-cargarCombos(File archivoCombos): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>310</y>
+      <w>400</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Pedido
+--
+/IVA: double/
+_-numeroPedidos: int_
+-idPedido: int
+-nombreCliente: String
+-direccionCliente: String
+--
++Pedido(String nombreCliente, String direccionCliente)
++getIdPedido(): int
++getNombreCliente(): String
++agregarProducto(Producto nuevoProducto): void
+-getPrecioNetoPedido(): int
+-getPrecioTotalPedido(): int
+-getPrecioIVAPedido(): int
+-generarTextoFactura(): String
++guardarFactura(File archivo): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>720</y>
+      <w>500</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Combo
+--
+-descuento: double
+-nombreCombo: String
+--
++Combo(String nombre, double descuento, ArrayList&lt;ProductoMenu&gt; items)
++getNombre(): String
++getPrecio(): int
++generarTextoFactura(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>710</y>
+      <w>260</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>ProductoAjustado
+--
+--
++ProductoAjustado(ProductoMenu base)
++getNombre(): String
++getPrecio(): int
++generarTextoFactura(): String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>470</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ProductoMenu
+--
+-nombre: String
+-precioBase: int
+--
++ProductoMenu(String nombre, int precioBase)
++getNombre(): String
++getPrecio(): int
++generarTextoFactura(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>290</y>
+      <w>350</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Ingrediente
+--
+-nombre: String
+-costoAdicional: int
+--
++Ingrediente(String nombre, int costoAdicional)
++getNombre(): String
++getCostoAdicional(): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>310</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Producto
+--
+--
++getPrecio(): int
++getNombre(): String
++generarTextoFactura(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>180</y>
+      <w>300</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=pedidos</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>240</y>
+      <w>90</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=menuBase</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1150</x>
+      <y>100</y>
+      <w>180</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=ingredientes</panel_attributes>
+    <additional_attributes>90.0;190.0;90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>200</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=0..1
+m1=pedidoEnCurso</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>30</x>
+      <y>140</y>
+      <w>460</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=menuCombos</panel_attributes>
+    <additional_attributes>10.0;580.0;10.0;10.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>530</y>
+      <w>320</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=itemsCombo</panel_attributes>
+    <additional_attributes>300.0;20.0;170.0;20.0;50.0;280.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>420</y>
+      <w>370</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>350.0;10.0;250.0;200.0;10.0;200.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>360</y>
+      <w>100</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0;80.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>420</y>
+      <w>30</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>390</y>
+      <w>360</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=agregados</panel_attributes>
+    <additional_attributes>280.0;10.0;280.0;350.0;10.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>390</y>
+      <w>440</w>
+      <h>390</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=eliminados</panel_attributes>
+    <additional_attributes>360.0;10.0;360.0;370.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>350</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=*
+m1=productos</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>600</y>
+      <w>110</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=1
+m1=productoBase</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>60</x>
+      <y>210</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Los pedidos deben 
+poder consultarse 
+por id
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
